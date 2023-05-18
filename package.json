@@ -1,0 +1,28 @@
+{
+  "name": "modelmodel",
+  "version": "0.0.1",
+  "description": "Model for models",
+  "main": "ModelModel.js",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/likestripes/modelmodel.git"
+  },
+  "author": "Travis Donia",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/likestripes/modelmodel/issues"
+  },
+  "homepage": "https://github.com/likestripes/modelmodel#readme",
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "vite": "^4.3.8"
+  }
+}
