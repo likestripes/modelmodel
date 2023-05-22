@@ -1,8 +1,8 @@
 {
   "name": "modelmodel",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Model for models",
-  "main": "src/ModelModel.jsx",
+  "main": "src/ModelModelWidget.jsx",
   "scripts": {
     "start": "vite",
     "build": "vite build",
