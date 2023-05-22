@@ -9,10 +9,10 @@ on:
   push:
     branches: ["main"]
 
-# jobs:
-#   build:
+jobs:
+#   test:
 #     runs-on: ubuntu-latest
-#     if: "startsWith(github.event.head_commit.message, '[RELEASE]')"
+#     if: "!startsWith(github.event.head_commit.message, '[RELEASE]')"
 #     steps:
 #       - uses: actions/checkout@v3
 #       - uses: actions/setup-node@v3
@@ -21,9 +21,8 @@ on:
 #       - run: npm ci
 #       - run: npm test
 
-
-jobs:
   update-version:
+#   needs: test
     runs-on: ubuntu-latest
     if: "!startsWith(github.event.head_commit.message, '[RELEASE]')"
     steps:
