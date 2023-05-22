@@ -19,6 +19,8 @@ jobs:
           node-version: 16
       - run: npm ci
 #      - run: npm test
+      - run: npm version patch -m "[RELEASE] %s"
+      - run: git push
 
   publish-npm:
     needs: build
