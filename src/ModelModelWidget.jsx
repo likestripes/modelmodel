@@ -2,15 +2,16 @@ import React, {useState} from 'react';
 import Modal from './Modal'
 import './tailwind.css';
 
-const ModelModelWidget = () => {
-  const modelmodel = ModelModel()
-  const [show, setShow] = useState('', '')
+const ModelModelWidget = ({modelmodel}) => {
+
+  const [show, setShow] = useState('', '');
   const [model, setModel] = useState('');
 
   const showModal = (e) => {
     const modelClick = e.target.getAttribute("data-model");
     if (!!modelClick) {
       setModel(modelClick);
+      modelmodel.setModel(modelClick);
     }
     setShow(!show);
   };
@@ -39,6 +40,5 @@ const SetupCTA = ({onClick}) => {
  )
 
 }
-
 
 export default ModelModelWidget;

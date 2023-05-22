@@ -8,8 +8,6 @@ const Modal = ({onClose, model, show}) => {
         {name: "Claude", provider: "Anthropic"}
     ]
 
-    console.log("model: " + model)
-
     if (show) {
         return (
             <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
@@ -18,8 +16,6 @@ const Modal = ({onClose, model, show}) => {
                     <div className="flex items-center space-x-5">
                         {models.map((model_obj, index) => (
                         <button key={index} onClick={onClose} data-model={model_obj.name} className="w-48 h-48 flex justify-center items-center border-neutral-200 rounded-md border-solid border hover:border-neutral-300" >
-                            { console.log(model_obj) }
-                             { console.log(model)}
                             { model_obj.name == model ? ( <Checkmark/> ) : ""  }
                             <span className="m-1">{model_obj.name}</span>
                             <span className="flex font-light text-neutral-400">by {model_obj.provider}</span>
