@@ -20,6 +20,8 @@ jobs:
       - run: npm ci
 #      - run: npm test
       - run: npm version patch -m "[RELEASE] %s"
+      - run: git config --global user.email "travis@likestripes.com"
+      - run: git config --global user.name "Github Actions NPM Publish"
       - run: git push
 
   publish-npm:
