@@ -1,14 +1,29 @@
-import React, {useState} from 'react';
+
+import React, {useState, useEffect} from 'react';
 import Modal from './Modal'
 import './tailwind.css';
 
+"use client"
 const ModelModelWidget = ({modelmodel}) => {
 
   const [show, setShow] = useState('', '');
   const [model, setModel] = useState('');
+  const [models, setModels] = useState(modelmodel.models);
+
+  // useEffect(() => {
+  //   async function getData() {
+  //     const response = await fetch("http://localhost:8001/incr", {credentials: 'include'});
+  //     const jsonData = await response.json();
+  //     console.log(jsonData);
+  //   }
+  //   getData();
+  // }, [])
+
 
   const showModal = (e) => {
-    const modelClick = e.target.getAttribute("data-model");
+    console.log(e)
+    const modelClick = e.target.getAttribute("data-model-key");
+    console.log(modelClick)
     if (!!modelClick) {
       setModel(modelClick);
       modelmodel.setModel(modelClick);
@@ -26,7 +41,7 @@ const ModelModelWidget = ({modelmodel}) => {
         {model} <span className="text-teal-500">///</span>
       </button>
     )}
-      <Modal model={model} onClose={showModal} show={show}/>
+      <Modal model={model} models={models} setModels={setModels} onClose={showModal} show={show}/>
     </div>
   );
   
