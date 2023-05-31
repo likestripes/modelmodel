@@ -21,9 +21,9 @@ const ModelModelWidget = ({modelmodel}) => {
 
 
   const showModal = (e) => {
+    e.preventDefault();
     console.log(e)
     const modelClick = e.target.getAttribute("data-model-key");
-    console.log(modelClick)
     if (!!modelClick) {
       setModel(modelClick);
       modelmodel.setModel(modelClick);

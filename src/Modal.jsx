@@ -15,8 +15,8 @@ const Modal = ({onClose, model, models, setModels, show}) => {
                         {Object.keys(models).map((key) => (
                         <button key={key} onClick={onClose} data-model-key={key} className="w-48 h-48 flex justify-center items-center border-neutral-200 rounded-md border-solid border hover:border-neutral-300" >
                             { models[key]["available"] ? ( <Checkmark color={ key == model ? "fill-teal-500": "fill-slate-300"} /> ) : ""  }
-                            <span className="m-1">{models[key]["name"]}</span>
-                            <span className="flex font-light text-neutral-400">by {models[key]["provider"]}</span>
+                            <span onClick={onClose} data-model-key={key} className="m-1">{models[key]["name"]}</span>
+                            <span onClick={onClose} data-model-key={key} className="flex font-light text-neutral-400">by {models[key]["provider"]}</span>
                         </button>
                         ))}
                     </div>

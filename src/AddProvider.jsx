@@ -6,7 +6,7 @@ const AddProvider = ({models, setModels}) => {
 
     const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState('');
-    const [provider, setProvider] = useState('');
+    const [provider, setProvider] = useState('openai');
   
     const handleKeyInputChange = (e) => {
       setInputValue(e.target.value);
