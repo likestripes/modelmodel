@@ -38,7 +38,7 @@ const ModelModelWidget = ({modelmodel}) => {
       <SetupCTA onClick={showModal} />
       ) : (
       <button onClick={showModal} className="items-center justify-center px-4 py-2 bg-white hover:bg-white-600 rounded-lg focus:outline-none border border-solid border-neutral-400">
-        {model} <span className="text-teal-500">///</span>
+        {models[model].name} <span className="text-teal-500">///</span>
       </button>
     )}
       <Modal model={model} models={models} setModels={setModels} onClose={showModal} show={show}/>
