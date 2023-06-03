@@ -9,18 +9,18 @@ const Modal = ({onClose, model, models, setModels, show}) => {
     if (show) {
         return (
             <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-                <div className="bg-white fixed right-5 left-5 top-5 bottom-5 rounded-lg p-6 shadow-xl">
-                    <h2 className="text-lg font-bold mb-4">Pick your model</h2>
-                    <div className="flex items-center space-x-5">
+                <div className="bg-white fixed right-5 left-5 top-5 bottom-5 rounded-lg shadow-xl">
+                    <h2 className="text-lg font-bold mb-4 pl-6 pt-6">Pick your model</h2>
+                    <div className="flex flex-wrap items-center p-6 md:space-x-5 md:space-y-0 space-y-5">
                         {Object.keys(models).map((key) => (
-                        <button key={key} onClick={onClose} data-model-key={key} className="w-48 h-48 flex justify-center items-center border-neutral-200 rounded-md border-solid border hover:border-neutral-300" >
+                        <button key={key} onClick={onClose} data-model-key={key} className="w-full h-10 md:w-48 md:h-48 flex md:justify-center items-center border-neutral-200 rounded-md border-solid md:border hover:border-neutral-300" >
                             { models[key]["available"] ? ( <Checkmark color={ key == model ? "fill-teal-500": "fill-slate-300"} /> ) : ""  }
                             <span onClick={onClose} data-model-key={key} className="m-1">{models[key]["name"]}</span>
-                            <span onClick={onClose} data-model-key={key} className="flex font-light text-neutral-400">by {models[key]["provider"]}</span>
+                            <span onClick={onClose} data-model-key={key} className="font-light text-neutral-400">by {models[key]["provider"]}</span>
                         </button>
                         ))}
                     </div>
-                    <div>
+                    <div className="p-0 m-0 absolute bottom-0 left-0 right-0">
                         <AddProvider models={models} setModels={setModels} />
                     </div>
                 </div>
