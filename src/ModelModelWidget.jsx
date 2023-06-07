@@ -7,7 +7,7 @@ import './tailwind.css';
 const ModelModelWidget = ({modelmodel}) => {
 
   const [show, setShow] = useState('', '');
-  const [model, setModel] = useState('');
+  const [activeModelKey, setActiveModelKey] = useState('');
   const [models, setModels] = useState(modelmodel.models);
 
   // useEffect(() => {
@@ -25,7 +25,7 @@ const ModelModelWidget = ({modelmodel}) => {
     console.log(e)
     const modelClick = e.target.getAttribute("data-model-key");
     if (!!modelClick) {
-      setModel(modelClick);
+      setActiveModelKey(modelClick);
       modelmodel.setModel(modelClick);
     }
     setShow(!show);
@@ -34,14 +34,14 @@ const ModelModelWidget = ({modelmodel}) => {
 
   return (
     <div>
-    { model == "" ? ( 
+    { activeModelKey == "" ? ( 
       <SetupCTA onClick={showModal} />
       ) : (
       <button onClick={showModal} className="items-center justify-center px-4 py-2 bg-white hover:bg-white-600 rounded-lg focus:outline-none border border-solid border-neutral-400">
-        {models[model].name} <span className="text-teal-500">///</span>
+        {models[activeModelKey].name} <span className="text-teal-500">///</span>
       </button>
     )}
-      <Modal model={model} models={models} setModels={setModels} onClose={showModal} show={show}/>
+      <Modal setActiveModelKey={activeModelKey} models={models} setModels={setModels} onClose={showModal} show={show}/>
     </div>
   );
   

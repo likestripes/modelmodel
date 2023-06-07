@@ -2,8 +2,8 @@
   "name": "modelmodel",
   "version": "0.0.18",
   "description": "Model for models",
-  "maindev": "src/ModelModelWidget.jsx",
-  "main": "dist/modelmodel.mjs",
+  "main": "src/ModelModelWidget.jsx",
+  "mainx": "dist/modelmodel.mjs",
   "scripts": {
     "start": "vite",
     "build": "vite build",
