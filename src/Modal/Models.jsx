@@ -2,18 +2,18 @@ import React, {useState} from "react";
 import AddProvider from "./AddProvider";
 
 "use client"
-const Models = ({onClose, navigate, availableProviders, modelsByProvider, activeModelKey, setModels}) => {
+const Models = ({onClose, navigate, providers, activeModelKey}) => {
 
     return (
         <div>
             <h2 className="text-lg font-bold mb-4 pl-6 pt-6">Pick your model</h2>
             <div className="flex flex-col pl-6 pt-6">
-                {Object.keys(modelsByProvider).map((provider) => (
-                    <div key={provider}>
-                        <h3 className="" onClick={() => navigate("provider/"+provider)}>{provider} {availableProviders[provider] ? "Settings" : "Add key"}</h3> 
+                {Object.values(providers).map((provider) => (
+                    <div key={provider.key}>
+                        <h3 className="" onClick={() => navigate("provider/"+provider.key)}>{provider.name} {provider.available ? "Settings" : "Add key"}</h3> 
                         <div className="flex flex-row items-center p-6 md:space-x-5 md:space-y-0 space-y-5">
-                        { Object.values(modelsByProvider[provider]).map((model) => (
-                            <ModelCard key={model.key} setModels={setModels} model={model} onClose={onClose} activeModelKey={activeModelKey} />
+                        { Object.values(provider.models).map((model) => (
+                            <ModelCard key={model.key} model={model} onClose={onClose} activeModelKey={activeModelKey} />
                         ))}
                         </div>
                     </div>
@@ -24,7 +24,7 @@ const Models = ({onClose, navigate, availableProviders, modelsByProvider, active
 }
 
 
-const ModelCard = ({onClose, setModels, model, activeModelKey}) => {
+const ModelCard = ({onClose, model, activeModelKey}) => {
 
     const [showAddKey, setShowAddKey] = useState(false);
 

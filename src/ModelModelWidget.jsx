@@ -8,7 +8,8 @@ const ModelModelWidget = ({modelmodel}) => {
 
   const [show, setShow] = useState('', '');
   const [activeModelKey, setActiveModelKey] = useState('');
-  const [models, setModels] = useState(modelmodel.models);
+  const [activeModel, setActiveModel] = useState({});
+  const [providers, setProviders] = useState(modelmodel.providers);
 
   // useEffect(() => {
   //   async function getData() {
@@ -26,6 +27,7 @@ const ModelModelWidget = ({modelmodel}) => {
     const modelClick = e.target.getAttribute("data-model-key");
     if (!!modelClick) {
       setActiveModelKey(modelClick);
+      setActiveModel({name: "modelmodel.byKey()"})
       modelmodel.setModel(modelClick);
     }
     setShow(!show);
@@ -38,10 +40,10 @@ const ModelModelWidget = ({modelmodel}) => {
       <SetupCTA onClick={showModal} />
       ) : (
       <button onClick={showModal} className="items-center justify-center px-4 py-2 bg-white hover:bg-white-600 rounded-lg focus:outline-none border border-solid border-neutral-400">
-        {models[activeModelKey].name} <span className="text-teal-500">///</span>
+        {activeModel.name} <span className="text-teal-500">///</span>
       </button>
     )}
-      <Modal setActiveModelKey={activeModelKey} models={models} setModels={setModels} onClose={showModal} show={show}/>
+      <Modal setActiveModelKey={activeModelKey} providers={providers} setProviders={setProviders} onClose={showModal} show={show}/>
     </div>
   );
   

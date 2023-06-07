@@ -4,20 +4,20 @@ import Models from "./Modal/Models";
 import Provider from "./Modal/Provider";
 
 "use client"
-const Modal = ({onClose, activeModelKey, models, setModels, show}) => {
+const Modal = ({onClose, activeModelKey, providers, setProviders, show}) => {
 
     const [currentView, setCurrentView] = useState('models','');
     const [currentId, setCurrentId] = useState('','');
 
-    const availableProviders = {};
-    const modelsByProvider = Object.keys(models).reduce((modelMemo, key) => {
-        const model = models[key];
-        model.key = key;
-        // console.log(model)
-        availableProviders[model.provider] = model["available"];
-        (modelMemo[model.provider] = modelMemo[model.provider] || []).push(model);
-        return modelMemo;
-      }, {});
+    // const availableProviders = {};
+    // const modelsByProvider = Object.keys(models).reduce((modelMemo, key) => {
+    //     const model = models[key];
+    //     model.key = key;
+    //     // console.log(model)
+    //     availableProviders[model.provider] = model["available"];
+    //     (modelMemo[model.provider] = modelMemo[model.provider] || []).push(model);
+    //     return modelMemo;
+    //   }, {});
 
 
       const navigate = (route) => {
@@ -35,10 +35,10 @@ const Modal = ({onClose, activeModelKey, models, setModels, show}) => {
       var viewComponent;
       switch(currentView) {
         case "provider":
-            viewComponent = (<Provider navigate={navigate} provider={currentId} availableProviders={availableProviders} onClose={onClose} modelsByProvider={modelsByProvider} activeModelKey={activeModelKey} setModels={setModels} />)
+            viewComponent = (<Provider navigate={navigate} provider={currentId} providers={providers} setProviders={setProviders} onClose={onClose} activeModelKey={activeModelKey} />)
             break;
         default:
-            viewComponent = (<Models navigate={navigate} availableProviders={availableProviders} onClose={onClose} modelsByProvider={modelsByProvider} activeModelKey={activeModelKey} />)
+            viewComponent = (<Models navigate={navigate} providers={providers} onClose={onClose} activeModelKey={activeModelKey} />)
       }
 
 
@@ -56,7 +56,7 @@ const Modal = ({onClose, activeModelKey, models, setModels, show}) => {
 
 {/* <AddKey provider={provider} setModels={setModels} /> */}
 
-const ModelCard = ({onClose, setModels, model, modelKey, activeModelKey}) => {
+const ModelCard = ({onClose, model, modelKey, activeModelKey}) => {
 
     const [showAddKey, setShowAddKey] = useState(false);
 

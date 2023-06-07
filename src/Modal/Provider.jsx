@@ -2,19 +2,19 @@ import React, {useState} from "react";
 import AddProvider from "./AddProvider";
 
 "use client"
-const Provider = ({provider, onClose, availableProviders, modelsByProvider, activeModelKey, setModels}) => {
+const Provider = ({provider, onClose, providers, activeModelKey, setProviders}) => {
 
     return (
         <div>
             <h2 className="text-lg font-bold mb-4 pl-6 pt-6">{provider}</h2>
             <div className="flex flex-col pl-6 pt-6">
-                <AddKey provider={provider} setModels={setModels} />
+                <AddKey provider={provider} setProviders={setProviders} />
             </div>
         </div>
     );
 }
 
-const AddKey = ({provider, setModels}) => {
+const AddKey = ({provider, setProviders}) => {
 
     const [inputValue, setInputValue] = useState('');
   
@@ -27,8 +27,8 @@ const AddKey = ({provider, setModels}) => {
       if (inputValue.trim() !== '') {
         modelmodel.addProvider(provider, inputValue).then(
             response => {
-              setModels(response.models)
-              modelmodel.models = response.models;
+                setProviders(response.providers)
+              modelmodel.providers = response.providers;
           }
         )
       }
@@ -63,37 +63,37 @@ const AddKey = ({provider, setModels}) => {
 }
 
 
-const ModelCard = ({onClose, setModels, model, modelKey, activeModelKey}) => {
+// const ModelCard = ({onClose, setModels, model, modelKey, activeModelKey}) => {
 
-    const [showAddKey, setShowAddKey] = useState(false);
+//     const [showAddKey, setShowAddKey] = useState(false);
 
-    if (model["available"]) {
-        console.log(model)
-        return (
-            <button key={modelKey} onClick={onClose} data-model-key={modelKey} className="w-full h-10 flex flex-col md:w-48 md:h-48 flex md:justify-center items-center border-neutral-200 rounded-md border-solid md:border hover:border-neutral-300" >
-                <span onClick={onClose} data-model-key={modelKey} className="flex flew-row m-1 items-center"><Checkmark className="m-1" height={16} width={16} color={ modelKey == activeModelKey ? "fill-teal-500": "fill-slate-300"} />{model["name"]}</span>
-                <span onClick={onClose} data-model-key={modelKey} className="font-light text-neutral-400">by {model["provider"]}</span>
-            </button>
-        )
-    }else{
-        return (
-            <div key={modelKey} data-model-key={modelKey} className="w-full h-10 flex flex-col md:w-48 md:h-48 flex md:justify-center items-center border-neutral-200 rounded-md border-solid md:border hover:border-neutral-300" >
-                <span onClick={onClose} data-model-key={modelKey} className="m-1">{model["name"]}</span>
-                <span onClick={onClose} data-model-key={modelKey} className="font-light text-neutral-400">by {model["provider"]}</span>
+//     if (model["available"]) {
+//         console.log(model)
+//         return (
+//             <button key={modelKey} onClick={onClose} data-model-key={modelKey} className="w-full h-10 flex flex-col md:w-48 md:h-48 flex md:justify-center items-center border-neutral-200 rounded-md border-solid md:border hover:border-neutral-300" >
+//                 <span onClick={onClose} data-model-key={modelKey} className="flex flew-row m-1 items-center"><Checkmark className="m-1" height={16} width={16} color={ modelKey == activeModelKey ? "fill-teal-500": "fill-slate-300"} />{model["name"]}</span>
+//                 <span onClick={onClose} data-model-key={modelKey} className="font-light text-neutral-400">by {model["provider"]}</span>
+//             </button>
+//         )
+//     }else{
+//         return (
+//             <div key={modelKey} data-model-key={modelKey} className="w-full h-10 flex flex-col md:w-48 md:h-48 flex md:justify-center items-center border-neutral-200 rounded-md border-solid md:border hover:border-neutral-300" >
+//                 <span onClick={onClose} data-model-key={modelKey} className="m-1">{model["name"]}</span>
+//                 <span onClick={onClose} data-model-key={modelKey} className="font-light text-neutral-400">by {model["provider"]}</span>
                 
-            </div>
-        )
-    }
-}
+//             </div>
+//         )
+//     }
+// }
 
-const Checkmark = ({color, height, width, className}) => {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" className={className} width={width} height={height} viewBox={"0 0 "+height+" "+width}>
-            <path className={color} d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-            <path className="" d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
-        </svg>
-    )
-}
+// const Checkmark = ({color, height, width, className}) => {
+//     return (
+//         <svg xmlns="http://www.w3.org/2000/svg" className={className} width={width} height={height} viewBox={"0 0 "+height+" "+width}>
+//             <path className={color} d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+//             <path className="" d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+//         </svg>
+//     )
+// }
 
 
 export default Provider;
