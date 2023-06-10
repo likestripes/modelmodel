@@ -1,6 +1,6 @@
 {
   "name": "modelmodel",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Model for models",
   "main": "src/ModelModelWidget.jsx",
   "mainx": "dist/modelmodel.mjs",
