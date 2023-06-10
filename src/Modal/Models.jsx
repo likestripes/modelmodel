@@ -13,7 +13,7 @@ const Models = ({onClose, navigate, providers, activeModelKey}) => {
                         <h3 className="" onClick={() => navigate("provider/"+provider.key)}>{provider.name} {provider.available ? "Settings" : "Add key"}</h3> 
                         <div className="flex flex-row items-center p-6 md:space-x-5 md:space-y-0 space-y-5">
                         { Object.values(provider.models).map((model) => (
-                            <Model key={model.key} model={model} provider={provider} onClose={onClose} activeModelKey={activeModelKey} />
+                            <Model key={model.key} model={model} provider={provider} onClose={onClose} activeModelKey={activeModelKey} navigate={navigate} />
                         ))}
                         </div>
                     </div>
@@ -22,8 +22,5 @@ const Models = ({onClose, navigate, providers, activeModelKey}) => {
         </div>
     );
 }
-
-
-
 
 export default Models;
